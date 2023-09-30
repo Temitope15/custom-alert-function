@@ -18,19 +18,25 @@ const displayMessage =(msgText, msgType)=>{
       panel.parentNode.removeChild(panel);
    
     })
-    if (msgType === "warning") {
-        msg.style.backgroundImage = "url(icons/warning.png)";
-        panel.style.backgroundColor = "red";
-        msg.style.color = "white";
-      } else if (msgType === "chat") {
+    switch (msgType){
+      case "chat" :{
         msg.style.backgroundImage = "url(icons/chat.png)";
-        panel.style.backgroundColor = "aqua";
-      } else {
-        msg.style.paddingLeft = "20px";
+        panel.style.backgroundColor = "cyan"
+        break;
       }
+      case "warning" :{
+        msg.style.backgroundImage = "url(icons/warning.png)"
+        panel.style.backgroundColor = "red"
+        msg.style.color ="white"
+        break;
     }
+    default: {
+      msg.style.paddingLeft = "20px"
+    }
+    }
+  }
 
     btn.addEventListener('click', ()=>{
-        displayMessage("Your inbox is almost full — delete some mails");
+        displayMessage("Your inbox is almost full — delete some mails", "warning");
       });
-
+    
